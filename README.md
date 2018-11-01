@@ -16,20 +16,18 @@ After completing this assignment, you should be able to:
 - Read from a file.
 - Choose a random value.
 - Keep track of state.
-- Test your code.
+-
 
 ## Details
 
 ### Deliverables
 
 - A Git repo containing at least:
+
   - a `README.md` file explaining how to run your project
-  - a `Pipfile` file with any third-party packages needed
-  - a suite of tests for your project
 
 ### Requirements
 
-- Passing unit tests
 - No PEP8 warnings or errors
 
 ## Normal Mode
@@ -38,7 +36,7 @@ You will implement the game Mystery Word. In your game, you will be playing
 against the computer.
 
 The computer must select a word at random from the list of words in the file
-`/usr/share/dict/words`. This file exists on your computer already.
+`words.txt` from this repository.
 
 The game must be interactive; the flow of the game should go as follows:
 
@@ -84,25 +82,6 @@ again if they reply positively.
 
 Implement the [evil version of this game](http://nifty.stanford.edu/2011/schwarz-evil-hangman/).
 Put it in a new Python program called "demon_words.py".
-
-You must write tests for new functionality you introduce.
-
-## Notes
-
-This is the first assignment where you are writing code to make tests pass.
-That makes it extra challenging.
-
-When testing, keep in mind that testing user input and output is hard. Testing
-functions that have no side-effects -- that is, they take some arguments and
-return a value without getting information from `input()` or using `random` --
-is much easier. Try to keep all your logic in _pure functions_ and then have an
-outer crust of functions that talk to the user or read from files surrounding
-your delicious pure function middle. If you are able to do this, you will not
-need to test that outer crust.
-
-## Additional Resources
-
-- [pytest](https://pytest.readthedocs.io/en/latest/).
 
 ## Credit
 
