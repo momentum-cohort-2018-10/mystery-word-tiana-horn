@@ -42,7 +42,7 @@ def mystery(word):
     
     guesses_remaining = 8
     
-    while guesses_remaining > 0:
+    while guesses_remaining > 0 and word_status.count("_") != 0:
         letter_guess = (input("What letter would you like to guess? ").lower())
         if len(letter_guess) > 1:
             letter_guess = (input("Try again. Please only choose one letter: ").lower())
@@ -74,7 +74,7 @@ def mystery(word):
             return mystery(word)
         else:
             print("Thank you for playing!")
-    if " ".join(word_status) == chosen_word:
+    if word_status.count("_") == 0:
         print("Congrats, you have guessed the correct word!")
         play_again = (input("Would you like to play again? ").lower())
         if play_again == "yes":
