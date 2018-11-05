@@ -21,19 +21,18 @@ with open("words.txt") as words_file:
         if len(w.strip()) == word_length: 
             word.append(w)
 chosen_word = (random.choice(word)).lower()
+
 for char in chosen_word.strip():
     word_status.append("_")
 print(" ".join(word_status), "Your word contains", word_length, "letters")
-print(chosen_word)
 
 
-def new(round):
-    print(mystery(word))
-
-def mystery(word):
+def mystery(game):
     """ Create a mystery word game 
     that allows users can select difficulty and guess a word 
     """
+    
+    
     guesses = [] 
     guesses_remaining = 8
     while guesses_remaining > 0 and word_status.count("_") != 0:
@@ -63,14 +62,17 @@ def mystery(word):
         print("No more guesses. Game Over. The correct word was", chosen_word)
         play_again = (input("Would you like to play again? ")).lower()
         if play_again == "yes":
-            return new(round)
+            print(mystery(difficulty))
         else:
             print("Thank you for playing!")
     if word_status.count("_") == 0:
         print("Congrats, you have guessed the correct word!")
         play_again = (input("Would you like to play again? ").lower())
         if play_again == "yes":
-            return new(round)
+            print(mystery(difficulty))
         else:
             print("Thank you for playing!")
+            
+
+
 print(mystery(difficulty))
