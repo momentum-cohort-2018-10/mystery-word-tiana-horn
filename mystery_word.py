@@ -28,8 +28,6 @@ print("Your word contains", word_length, "letters")
 print(chosen_word)
 
 
-
-
 # def display_letter(letter_guess, correct_guesses):
 #     """
 #     Show player how many spaces are remaining and where their correct letters appear
@@ -42,57 +40,62 @@ print(chosen_word)
     
 #return(correct_guesses, all_guesses)
 
-def display_letter(letter_guess, correct_guesses):
+#    for char in chosen_word:
+#         if letter_guess in correct_guesses: 
+#             word_status.append(letter_guess)
+#         else: 
+#             word_status.append(" - ")
+
+
+
+def mystery(word):
+    """ Creates a word game
+    that allows users to guess a letter in a mystery word """
     letter_guess = (input("What letter would you like to guess? ").lower())
+    word_status = []
+    guesses_remaining = 8
+    all_guesses = []
+    correct_guesses = []
+    if len(letter_guess) > 1:
+       letter_guess = (input("Try again. Please only choose one letter: ").lower())
+    if letter_guess in all_guesses:
+       print("Please guess again, you have already guessed that letter") 
+    if letter_guess in chosen_word:
+       all_guesses.append(letter_guess)
+       correct_guesses.append(letter_guess)
+       #word_status = display_letter(letter_guess, correct_guesses)
+       print(word_status, "That letter is in the word! You have guessed", " ".join(all_guesses) )
+    if letter_guess not in chosen_word:
+       all_guesses.append(letter_guess)
+       guesses_remaining = guesses_remaining - 1
+       print(word_status, "Chosen letter is not in the word, you have ", guesses_remaining, " guesses left")
+     
+print(mystery(difficulty))
+
+def display_letter(letter, guesses):
+    """ Shows the player how many letters still
+    need to be guessed.
+    """
+    #letter_guess = (input("What letter would you like to guess? ").lower())
+    mystery(word)
     if letter_guess in correct_guesses: 
         return letter_guess
     else: 
         return "_"
 print([display_letter(letter_guess,correct_guesses) for letter_guess in word])
 
+def gameover(status):
+    """ Stops the game when a player wins or loses and asks if 
+    they want to play again.
+    """
+    if " ".join(word_status) == chosen_word:
+        print("Congrats, you have guessed the correct word!")
+        play_again = (input("Would you like to play again? ").lower())
+    if play_again == "yes":
+        return mystery(word)
+    else:
+        print("Thank you for playing!")
 
-
-
-
-def mystery(word):
-    """ Create a mystery word game
-    that allows users can select difficulty and guess a word """
-    word_status = []
-    guesses_remaining = 8
-    all_guesses = []
-    correct_guesses = []
-
-    
-    # if " ".join(word_status) == chosen_word:
-    #    print("Congrats, you have guessed the correct word!")
-    #    play_again = (input("Would you like to play again? ").lower())
-    #    if play_again == "yes":
-    #        return mystery(word)
-    #    else:
-    #        print("Thank you for playing!")
-
-    if len(letter_guess) > 1:
-       letter_guess = (input("Try again. Please only choose one letter: ").lower())
-   #while guesses_remaining > 0:
-    if letter_guess in all_guesses:
-       print("Please guess again, you have already guessed that letter") 
-    if letter_guess in chosen_word:
-       #word_status = display_letter(letter_guess, correct_guesses)
-       all_guesses.append(letter_guess)
-       correct_guesses.append(letter_guess)
-       game_status = display_letter(letter_guess, correct_guesses)
-       print(game_status, "You have guessed", " ".join(all_guesses) )
-    #    for char in chosen_word:
-    #         if letter_guess in correct_guesses: 
-    #             word_status.append(letter_guess)
-    #         else: 
-    #             word_status.append(" - ")
-       print(word_status, "That letter is in the word!")
-    if letter_guess not in chosen_word:
-       all_guesses.append(letter_guess)
-       guesses_remaining = guesses_remaining - 1
-       print(word_status, "Chosen letter is not in the word, you have ", guesses_remaining, " guesses left")
- 
     if guesses_remaining > 0:
        return mystery(word)
     else:
@@ -102,8 +105,3 @@ def mystery(word):
            return mystery(word)
        else:
            print("Thank you for playing!")
-
-
-print(mystery(difficulty))
-
-
