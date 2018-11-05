@@ -120,9 +120,10 @@
 # print(display_letter("happyyyy"))
 
 import random
- #def pick(word):
-#""" Chooses a random word for the user to 
-# guess based on their desired difficulty level """
+def pick(word):
+    """ Chooses a random word for the user to 
+    guess based on their desired difficulty level 
+    """
 word_length = 0
 difficulty = (input("Would you like to play the easy, normal or hard mode? ")).lower()
 easy = [4, 5, 6]
@@ -140,7 +141,7 @@ with open("words.txt") as words_file:
     for w in words_file.readlines():
         if len(w.strip()) == word_length: 
             word.append(w)
-chosen_word = (random.choice(word))
+chosen_word = (random.choice(word)).lower()
 for char in chosen_word.strip():
     word_status.append("_")
 print(" ".join(word_status), "Your word contains", word_length, "letters")
