@@ -2,7 +2,7 @@
 
 ## Description
 
-Implement the game of Mystery Word/Hangman.
+Implement the game of Mystery Word.
 
 ## Objectives
 
